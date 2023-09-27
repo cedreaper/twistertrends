@@ -149,3 +149,39 @@ h1, h2 {
 .read-the-docs {
   color: #888;
 }
+
+.navigation ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Layout list items in a row */
+}
+
+.navigation li {
+  margin-left: 15px; /* Space between links */
+}
+
+.navigation a {
+  color: #fff; 
+  text-decoration: none; 
+  padding: 0.5rem 1rem;
+  border-radius: 5px; 
+  transition: background-color 0.3s; 
+}
+
+.navigation a:hover {
+  background-color: rgb(184, 11, 11); 
+}
+
+.navigation a.active {
+  background-color: rgb(184, 11, 11); 
+}
+
+.layout-header {
+  background-color: rgb(184, 11, 11);
+  color: #fff; 
+  padding: 1rem 5%; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
