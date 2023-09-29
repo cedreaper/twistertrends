@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
                 </ul>
             </nav>
             </header>
-            <main>
+            <main className='layout-body'>
                 {children} 
             </main>
             <footer className='layout-footer'>
