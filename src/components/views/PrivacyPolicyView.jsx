@@ -8,7 +8,6 @@ const PrivacyPolicyView = () => {
             </p>
         </div>
     );
-
 }
 
 export default PrivacyPolicyView;
