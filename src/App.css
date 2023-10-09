@@ -187,7 +187,6 @@ h1, h2 {
 }
 
 .layout-body {
-  overflow: auto;
   height: 38rem;
   width: 38rem;
 }
