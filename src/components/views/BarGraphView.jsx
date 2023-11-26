@@ -1,20 +1,28 @@
 import { Bar } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
-import { requestData, pullTornadoData } from '../../services/dataService';
+import { pullTornadoData } from '../../services/dataService';
 import '../../App.css';
 import DashboardFilters from '../common/DashboardFilters';
 
-const LineGraphView = () => {
+const BarGraphView = () => {
     const [renderKey, setRenderKey] = useState(Date.now());
     const [datar, setDatar] = useState([]);
+    const [selectedCounties, setSelectedCounties] = useState(['all']);
+    const [selectedYears, setSelectedYears] = useState(['all']);
+    const [selectedMonths, setSelectedMonths] = useState(['all']);
+
+  const handleFilterChange = (filter) => {
+    setSelectedCounties(filter.counties);
+    setSelectedYears(filter.years);
+    setSelectedMonths(filter.months);
+    console.log(filter);
+  };
 
     useEffect(() => {  
         const url = 'https://www.codeblossom.net/tt/TornadoEvents.php'
         pullTornadoData(url, setDatar, 0);
         setRenderKey(Date.now());
     }, []);
-
-  
 
     const data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -65,9 +73,13 @@ const options = {
 
     return (
         <div>
-             <div>
-            <h6>County Selector</h6>
-            <DashboardFilters />
+            <div>
+            <h6>Multiple Selected Drop Down Values Accepted </h6>
+            <DashboardFilters  
+            selectedCounties={selectedCounties}
+            selectedYears={selectedYears}
+            selectedMonths={selectedMonths}
+            onChange={handleFilterChange}/>
             </div>
             <h2>Monthly Average Temp to Tornado Ratio</h2>
             <Bar className="line-graph" data={myData} options={options} key={renderKey} />
@@ -76,4 +88,4 @@ const options = {
     ); 
 }
 
-export default LineGraphView;
+export default BarGraphView;

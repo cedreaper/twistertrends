@@ -8,7 +8,8 @@ const AboutView = () => {
                 <hr />
                 <ul>
                     <li>Being a resident of the state of Oklahoma and growing up around the natural phenomena
-                        known as Tornados </li>
+                        known as Tornados.</li>
+                    <br />
                     <li>My graduate school database course at North Dakota State University challenging us to come up with
                         an original project that we're genuinely interested in that incorporates elements drawn from 
                         what we've learned throughout the course.
@@ -19,7 +20,6 @@ const AboutView = () => {
                 for the initial topic feedback which started the process into this journey.
                 <br />
                 <hr />
-                <br />
                 Now for the concrete details...
                 <br />
                 <br />
@@ -27,10 +27,9 @@ const AboutView = () => {
                 data from the National Weather Service in an attempt to locate a correlation between the two events trends.
                 <br />
                 <br />
-                The data will processed through ETL principles to ensure relevancy and eliminate waste.
+                The bulk data will processed using ETL principles to ensure relevancy and eliminate waste.
             </p>
-        </div>
-        
+        </div>   
     );
 }
 

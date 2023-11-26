@@ -190,3 +190,30 @@ h1, h2 {
   height: 38rem;
   width: 38rem;
 }
+
+.line-graph {
+   width: 38rem;
+   height: 38rem;
+}
+
+.filter-group select[multiple]{
+  margin-bottom: 10px; 
+  max-height: 75px;
+  overflow-y: auto;
+}
+
+.filter-group select[multiple] option{
+  margin: 50x; 
+  max-height: 40px;
+  overflow-y: auto;
+}
+
+.filter-padding {
+  margin-left: 10px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

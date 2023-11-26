@@ -8,6 +8,8 @@ import './App.css'
 import AboutView from './components/views/AboutView';
 import TermsOfServiceView from './components/views/TermsOfServiceView';
 import LineGraphView from './components/views/LineGraphView';
+import BarGraphView from './components/views/BarGraphView';
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
                 <Route path='/about' element={<AboutView />} />
                 <Route path='/terms' element={<TermsOfServiceView />} />
                 <Route path='/visualization/line' element={<LineGraphView />} />
+                <Route path='visualization/bar'  element={<BarGraphView />} />
             </Routes>
         </MainLayout>
     </Router>
