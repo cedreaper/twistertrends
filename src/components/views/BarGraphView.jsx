@@ -6,44 +6,39 @@ import DashboardFilters from '../common/DashboardFilters';
 
 const BarGraphView = () => {
     const [renderKey, setRenderKey] = useState(Date.now());
-    const [datar, setDatar] = useState([]);
+    const [tornadoData, setTornadoData] = useState([]);
+    const [tornadoCount, setTornadoCount] = useState(0);
     const [selectedCounties, setSelectedCounties] = useState(['all']);
     const [selectedYears, setSelectedYears] = useState(['all']);
     const [selectedMonths, setSelectedMonths] = useState(['all']);
+    const [graphLabels, setGraphLabels] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+    const url = 'https://www.codeblossom.net/tt/TornadoEvents.php';
 
   const handleFilterChange = (filter) => {
     setSelectedCounties(filter.counties);
     setSelectedYears(filter.years);
     setSelectedMonths(filter.months);
-    console.log(filter);
+
+    setGraphLabels(filter.months);
+
+    generateChartData(filter);
   };
 
+  const generateChartData = (filter) => {
+      pullTornadoData(url, setTornadoData, filter.counties, filter.months, filter.years);
+  }
+
     useEffect(() => {  
-        const url = 'https://www.codeblossom.net/tt/TornadoEvents.php'
-        pullTornadoData(url, setDatar, 0);
+        pullTornadoData(url, setTornadoData, selectedCounties, selectedMonths, selectedYears);
         setRenderKey(Date.now());
     }, []);
 
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-            label: 'Trends',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: true, 
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', 
-            borderColor: 'rgb(75, 192, 192)', 
-            tension: 0.1
-            }
-        ]
-    };
-
   const myData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: graphLabels,
     datasets: [
         {
             label: 'Tornados',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: tornadoData,
             //fill: true, 
             backgroundColor: 'rgba(75, 192, 192, 0.2)', 
             borderColor: 'rgb(75, 192, 192)', 
@@ -60,13 +55,29 @@ const BarGraphView = () => {
 
 const options = {
     responsive: true,
+    scales: {
+        x: {
+            ticks: {
+                color: 'white',
+            },
+        },
+        y: {
+            ticks: {
+                color: 'white',
+            },
+        },
+    },
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+            color: 'white',
+          },
       },
       title: {
         display: true,
-        text: 'Climatic Events',
+        text: selectedYears.find(item => item === 'all') ? '1950 - 2023' :`${selectedYears[selectedYears.length - 1]} - ${selectedYears[0]}`,
+        color: 'white',
       },
     },
   };
@@ -83,7 +94,7 @@ const options = {
             </div>
             <h2>Monthly Average Temp to Tornado Ratio</h2>
             <Bar className="line-graph" data={myData} options={options} key={renderKey} />
-            Test Record: {datar}
+            Total Tornado Count: {tornadoData}
         </div>
     ); 
 }

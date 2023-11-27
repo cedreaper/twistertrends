@@ -10,7 +10,7 @@ const LineGraphView = () => {
 
     useEffect(() => {  
         const url = 'https://www.codeblossom.net/tt/TornadoEvents.php'
-        pullTornadoData(url, setDatar, 0);
+        pullTornadoData(url, setDatar);
         setRenderKey(Date.now());
     }, []);
 

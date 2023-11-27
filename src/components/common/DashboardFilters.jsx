@@ -52,17 +52,24 @@ const DashboardFilters = ({ selectedCounties, selectedYears, selectedMonths, onC
    
   }, []);
 
-  const handleFilterChange = (e) => {
+const handleFilterChange = (e) => {
     const { name, value } = e.target;
     const selectedOptions = e.target.selectedOptions;
-    const selectedArrayForm = Array.from(selectedOptions).map(option => option.value);
+    const selectedArrayForm = Array.from(selectedOptions).map((option) => option.value);
   
-  
-    onChange({
-      counties: name === "counties" ? selectedArrayForm : [],
-      years: name === "years" ? selectedArrayForm : [],
-      months: name === "months" ? selectedArrayForm : [],
-    });
+    if (selectedArrayForm.includes("all")) {
+      onChange({
+        counties: name === "counties" ? counties.map((countyObject) => countyObject.county) : selectedCounties,
+        years: name === "years" ? years.map((yearObject) => yearObject.year) : selectedYears,
+        months: name === "months" ? months.map((month) => month.name).filter(item => item !== 'all') : selectedMonths,
+      });
+    } else {
+      onChange({
+        counties: name === "counties" ? selectedArrayForm : selectedCounties,
+        years: name === "years" ? selectedArrayForm : selectedYears,
+        months: name === "months" ? selectedArrayForm : selectedMonths,
+      });
+    }
   };
 
   return (
