@@ -11,8 +11,11 @@ const MainLayout = ({ children }) => {
                 <li><NavLink to="/" exact activeclassnameame="active">Home</NavLink></li>
                 <li><NavLink to="/about" activeclassname="active">About</NavLink></li>
                 <li><NavLink to="/contact" activeclassname="active">Contact</NavLink></li>
+                <li><NavLink to="/visualization/bar" activeclassname="active">Bar Graph</NavLink></li>
                 <li><NavLink to="/visualization/line" activeclassname="active">Line Graph</NavLink></li>
                 <li><NavLink to="/visualization/scatter" activeclassname="active">Scatter Plot</NavLink></li>
+                <li><NavLink to="/visualization/histogram" activeclassname="active">Histogram</NavLink></li>
+                <li><NavLink to="/visualization/explore" activeclassname="active">Explore</NavLink></li>
                 </ul>
             </nav>
             </header>

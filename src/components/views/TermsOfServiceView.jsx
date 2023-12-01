@@ -1,7 +1,7 @@
 const TermsOfServiceView = () => {
     return (
         <div className="terms-of-service">
-            <h2>TwisterTrends Terms of Service</h2>
+            <h2>Terms of Service</h2>
             
             <h3>1. Acceptance of Terms</h3>
             <p>By accessing and using the TwisterTrends website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not accept these terms, please refrain from using this website.</p>
