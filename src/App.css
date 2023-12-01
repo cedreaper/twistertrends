@@ -151,14 +151,14 @@ h1, h2 {
 }
 
 .navigation ul {
-  list-style-type: none; /* Remove default bullet points */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
-  display: flex; /* Layout list items in a row */
+  list-style-type: none; 
+  padding: 0;
+  margin: 0; 
+  display: flex;
 }
 
 .navigation li {
-  margin-left: 15px; /* Space between links */
+  margin-left: 15px; 
 }
 
 .navigation a {

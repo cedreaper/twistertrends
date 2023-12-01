@@ -1,0 +1,91 @@
+.search-view {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #fff; 
+    background-color: #333; 
+    border-radius: 10px;;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.filter label {
+    margin-right: 10px;
+}
+
+.filter select {
+    background-color: #555;
+    color: #ddd; 
+    border: 1px solid #777;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.data-table {
+    max-height: 400px; 
+    min-width: 500px;
+    overflow-y: auto;
+    border: 1px solid #777; 
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #222; 
+}
+
+th, td {
+    border-bottom: 1px solid #777; 
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #444; 
+}
+
+tr:nth-child(even) {
+    background-color: #2c2c2c;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+
+body {
+    background-color: #1a1a1a;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #202020; 
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+nav a:hover {
+    color: #ccc;
+}

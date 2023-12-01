@@ -1,35 +1,41 @@
 import { Bar } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
-import { pullTornadoData } from '../../services/dataService';
+import { pullTemperatureData, pullTornadoData } from '../../services/dataService';
 import '../../App.css';
 import DashboardFilters from '../common/DashboardFilters';
 
 const BarGraphView = () => {
     const [renderKey, setRenderKey] = useState(Date.now());
     const [tornadoData, setTornadoData] = useState([]);
-    const [tornadoCount, setTornadoCount] = useState(0);
+    const [tempData, setTempData] = useState([]);
     const [selectedCounties, setSelectedCounties] = useState(['all']);
     const [selectedYears, setSelectedYears] = useState(['all']);
     const [selectedMonths, setSelectedMonths] = useState(['all']);
     const [graphLabels, setGraphLabels] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
     const url = 'https://www.codeblossom.net/tt/TornadoEvents.php';
+    const tempUrl = 'https://www.codeblossom.net/tt/readAverageTemps.php';
 
   const handleFilterChange = (filter) => {
     setSelectedCounties(filter.counties);
     setSelectedYears(filter.years);
     setSelectedMonths(filter.months);
 
+    generateChartData(filter);
+
     setGraphLabels(filter.months);
 
-    generateChartData(filter);
   };
 
   const generateChartData = (filter) => {
       pullTornadoData(url, setTornadoData, filter.counties, filter.months, filter.years);
+
+      pullTemperatureData(tempUrl, setTempData, filter.months, filter.years);
+      
   }
 
     useEffect(() => {  
         pullTornadoData(url, setTornadoData, selectedCounties, selectedMonths, selectedYears);
+        pullTemperatureData(tempUrl, setTempData, selectedMonths, selectedYears);
         setRenderKey(Date.now());
     }, []);
 
@@ -42,13 +48,15 @@ const BarGraphView = () => {
             //fill: true, 
             backgroundColor: 'rgba(75, 192, 192, 0.2)', 
             borderColor: 'rgb(75, 192, 192)', 
-            tension: 0.1
+            tension: 0.1,
+            yAxisID: 'y'
         },
          {
             label: 'Avg Monthly Temp',
-            data: [25, 85, 50, 60, 17, 20, 90],
+            data: tempData,
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            yAxisID: 'y1'
         }
     ]
 };
@@ -66,6 +74,13 @@ const options = {
                 color: 'white',
             },
         },
+        y1: {
+            position: 'right',
+            beginAtZero: true,
+            ticks: {
+                color: 'white',
+            }
+          },
     },
     plugins: {
       legend: {
@@ -94,7 +109,6 @@ const options = {
             </div>
             <h2>Monthly Average Temp to Tornado Ratio</h2>
             <Bar className="line-graph" data={myData} options={options} key={renderKey} />
-            Total Tornado Count: {tornadoData}
         </div>
     ); 
 }

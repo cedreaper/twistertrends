@@ -9,6 +9,9 @@ import AboutView from './components/views/AboutView';
 import TermsOfServiceView from './components/views/TermsOfServiceView';
 import LineGraphView from './components/views/LineGraphView';
 import BarGraphView from './components/views/BarGraphView';
+import ScatterPlotView from './components/views/ScatterPlotView';
+import HistogramView from './components/views/HistogramView';
+import SearchView from './components/views/SearchView';
 
 
 
@@ -26,6 +29,9 @@ function App() {
                 <Route path='/terms' element={<TermsOfServiceView />} />
                 <Route path='/visualization/line' element={<LineGraphView />} />
                 <Route path='visualization/bar'  element={<BarGraphView />} />
+                <Route path='/visualization/scatter'  element={<ScatterPlotView />} />
+                <Route path='/visualization/histogram' element={<HistogramView />} />
+                <Route path='/visualization/explore' element={<SearchView />} />
             </Routes>
         </MainLayout>
     </Router>
