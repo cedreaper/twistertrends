@@ -200,7 +200,6 @@ export async function requestData(
             const response = await requestData(url);
             let tornadoData = response.records;
     
-            // Group tornadoes by month
             let groupedByMonth = {};
             tornadoData.forEach((record) => {
                 const recordDate = new Date(record.start);
