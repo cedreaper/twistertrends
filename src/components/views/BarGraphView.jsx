@@ -34,6 +34,13 @@ const BarGraphView = () => {
   }
 
     useEffect(() => {  
+        const startFilter = {
+            months: selectedMonths,
+            years: selectedYears,
+            counties: selectedCounties,
+        };
+
+        handleFilterChange(startFilter);
         pullTornadoData(url, setTornadoData, selectedCounties, selectedMonths, selectedYears);
         pullTemperatureData(tempUrl, setTempData, selectedMonths, selectedYears);
         setRenderKey(Date.now());
@@ -45,7 +52,6 @@ const BarGraphView = () => {
         {
             label: 'Tornados',
             data: tornadoData,
-            //fill: true, 
             backgroundColor: 'rgba(75, 192, 192, 0.2)', 
             borderColor: 'rgb(75, 192, 192)', 
             tension: 0.1,

@@ -189,6 +189,7 @@ h1, h2 {
 .layout-body {
   height: 38rem;
   width: 38rem;
+  margin-left: 25%;
 }
 
 .line-graph {
